@@ -1,0 +1,33 @@
+Assume there is a SQL database containing the following tables.
+
+CREATE TABLE `type` (
+	`TYPE` varchar(45) NOT NULL DEFAULT '',
+	`DESCRIPTION` varchar(150) NOT NULL DEFAULT '',
+	PRIMARY KEY (`TYPE`)
+)
+
+
+CREATE TABLE `type_value` (
+	`TYPE` varchar(45) NOT NULL DEFAULT '',
+	`TYPE_VALUE` varchar(100) DEFAULT '',
+	`DESCRIPTION` varchar(100) DEFAULT '',
+	`TYPE_ATTRIBUTE` varchar(45) NOT NULL DEFAULT '',
+	`ALT_VALUE_1` varchar(100) DEFAULT NULL,
+	`ALT_VALUE_2` varchar(100) DEFAULT NULL,
+	`ALT_VALUE_3` varchar(100) DEFAULT NULL,
+
+	PRIMARY KEY (`TYPE`,`TYPE_ATTRIBUTE`),
+  	CONSTRAINT `FK_type_value_1` FOREIGN KEY (`TYPE`) REFERENCES `type` (`TYPE`) ON DELETE CASCADE ON UPDATE CASCADE
+)
+
+
+
+Create a JSP to take as input a ‘type’ and retrieve data from the type_value table
+to display to user.
+
+
+For task assume that values will be provided via either .properties file or via system environment variable (you choose).
+The values are those required to connect to database such as
+1) DB Host 2) DB port  3) DB user 3) DB password
+
+
